@@ -224,6 +224,8 @@ fs: $(UPROGS)
 		dd if=/dev/zero of=fs.img bs=512k count=512; \
 		mkfs.vfat -F 32 fs.img; fi
 	@mount fs.img $(dst)
+	@rm -rf $(dst)/riscv64
+	@cp -r riscv64 $(dst)/riscv64
 	@if [ ! -d "$(dst)/bin" ]; then mkdir $(dst)/bin; fi
 	@cp README $(dst)/README
 	@for file in $$( ls $U/_* ); do \
